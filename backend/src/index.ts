@@ -6,9 +6,10 @@ import { cors } from 'hono/cors'
 
 const app = new Hono()
 
-app.use('/api/*', cors({
-  origin: 'http://localhost:5173', // Your frontend URL
+app.use('/*', cors({
+  origin: '*', // Allows any website to hit your API
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowHeaders: ['Content-Type', 'Authorization'],
 }))
 
 app.route("/api/v1/user" , userRouter );
